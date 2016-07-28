@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">PedidosELCA</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title">Agregar Pedido</string>
+    <string name="plus">"+"</string>
+    <string name="adduser">"Agregar Pedido"</string>
+    <string name="user">"Datos del pedido"</string>
+    <string name="descrip">"Introduzca descripcion del pedido"</string>
+    <string name="client">"Introduzca el cliente"</string>
+    <string name="calle">"Domicilio"</string>
+    <string name="numero">"Numero domicilio"</string>
+    <string name="ciudad">"Ciudad"</string>
+    <string name="Provincia">"Provincia"</string>
+    <string name="save">"Grabar"</string>
+    <string name="cancel">"Cancelar"</string>
+    <string name="adduseractivitylabel">"Add User Activity"</string>
+</resources>
