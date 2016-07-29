@@ -135,6 +135,7 @@ public class DBController extends SQLiteOpenHelper {
 
 
 
+
     ////////////////////////***************QUERY PEDIDOS****************///////////////////
 
 
@@ -200,6 +201,34 @@ public class DBController extends SQLiteOpenHelper {
         return wordList;
     }
 
+
+    ///////////////////////QUERY PARA ACCESO////////////////////////////////////
+    public ArrayList<HashMap<String, String>> listdetalle(String idpedido) {
+        ArrayList<HashMap<String, String>> detalle;
+        detalle = new ArrayList<HashMap<String, String>>();
+        String selectQuery = "SELECT  cliente,calle,numero,ciudad,provincia,descripcion FROM aux_pedido where idauxpedido = "+idpedido+" ";
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                HashMap<String, String> map = new HashMap<String, String>();
+                map.put("cliente", cursor.getString(0));
+                map.put("calle", cursor.getString(1));
+                map.put("numero", cursor.getString(2));
+                map.put("ciudad", cursor.getString(3));
+                map.put("provincia", cursor.getString(4));
+                map.put("descripcion", cursor.getString(5));
+                // map.put("fechacr", cursor.getString(6));
+                //  map.put("fechack", cursor.getString(7));
+
+                detalle.add(map);
+
+            }while (cursor.moveToNext());
+        }
+        database.close();
+        return detalle;
+
+    }
 
 
 

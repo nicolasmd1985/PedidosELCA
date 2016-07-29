@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -37,12 +38,37 @@ public class Pedidos  extends ActionBarActivity {
 
     HashMap<String, String> queryValues;
 
+    ListView lista;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedidos);
 
         cargabdl();
+
+
+
+        final ListView lista=(ListView)findViewById(android.R.id.list);
+
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView parent, View view, int i, long l) {
+                Toast.makeText(getApplicationContext(), "presiono " + i, Toast.LENGTH_SHORT).show();
+                StringBuilder sb = new StringBuilder();
+                sb.append(i+1);
+                Intent x = new Intent(Pedidos.this, detalles_pedido.class);
+                x.putExtra("idpedido", sb.toString() );
+                //for (HashMap<String, String> hashMap : loginlist) {}
+                            //System.out.println(lista.);
+                startActivity(x);
+
+            }
+        });
+
+
+
     }
 
 

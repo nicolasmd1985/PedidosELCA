@@ -17,16 +17,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
-        <activity android:name=".Pedidos"></activity>
-
+        <activity android:name=".Pedidos" />
         <activity
-            android:name="seguridad.elca.pedidoselca.NewUser"
-            android:label="@string/adduseractivitylabel" android:noHistory="true">
-        </activity>
-
+            android:name=".NewUser"
+            android:label="@string/adduseractivitylabel"
+            android:noHistory="true"></activity>
+        <activity android:name=".detalles_pedido"></activity>
     </application>
 
 </manifest>
