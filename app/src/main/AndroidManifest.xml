@@ -22,8 +22,9 @@
         <activity
             android:name=".NewUser"
             android:label="@string/adduseractivitylabel"
-            android:noHistory="true"></activity>
-        <activity android:name=".detalles_pedido"></activity>
+            android:noHistory="true" />
+        <activity android:name=".detalles_pedido" />
+        <activity android:name=".Scaner_dispositivo"></activity>
     </application>
 
 </manifest>

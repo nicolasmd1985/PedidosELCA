@@ -7,20 +7,23 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class detalles_pedido extends ActionBarActivity {
+public class detalles_pedido extends ActionBarActivity implements View.OnClickListener{
 
     DBController controller = new DBController(this);
 
 
     private TextView Emp,prob,cal,num,idn,ciu,prov;
 
+    private Button scanBtn;
 
+    String idpedido;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +36,12 @@ public class detalles_pedido extends ActionBarActivity {
         prov = (TextView) findViewById(R.id.provincia);
         prob = (TextView) findViewById(R.id.problema);
 
+        scanBtn = (Button)findViewById(R.id.button2);
+
+        scanBtn.setOnClickListener(this);
+
         //System.out.println(getIntent().getStringExtra("idpedido"));
-        String idpedido = getIntent().getStringExtra("idpedido");
+         idpedido = getIntent().getStringExtra("idpedido");
         detalle(idpedido);
 
     }
@@ -72,4 +79,12 @@ public class detalles_pedido extends ActionBarActivity {
     }
 
 
+    @Override
+    public void onClick(View view) {
+        System.out.println("hola");
+
+        Intent i = new Intent(detalles_pedido.this, Scaner_dispositivo.class);
+        i.putExtra("idpedido", idpedido );
+        startActivity(i);
+    }
 }
