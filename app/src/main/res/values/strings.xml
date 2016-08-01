@@ -16,4 +16,8 @@
     <string name="cancel">"Cancelar"</string>
     <string name="adduseractivitylabel">"Add User Activity"</string>
     <string name="scan">Scan</string>
+    <string name="titled">Agregar Dispositivos</string>
+    <string name="pedidopen">Pedidos Pendientes</string>
+    <string name="terminar">Terminar</string>
+    <string name="disp">Dspositivos Instalados</string>
 </resources>

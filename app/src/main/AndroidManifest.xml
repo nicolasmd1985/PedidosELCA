@@ -24,7 +24,8 @@
             android:label="@string/adduseractivitylabel"
             android:noHistory="true" />
         <activity android:name=".detalles_pedido" />
-        <activity android:name=".Scaner_dispositivo"></activity>
+        <activity android:name=".Scaner_dispositivo" />
+        <activity android:name=".Agregar_dispositivos"></activity>
     </application>
 
 </manifest>
