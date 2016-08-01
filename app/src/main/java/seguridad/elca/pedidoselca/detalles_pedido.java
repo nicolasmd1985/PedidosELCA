@@ -83,7 +83,7 @@ public class detalles_pedido extends ActionBarActivity implements View.OnClickLi
     public void onClick(View view) {
         System.out.println("hola");
 
-        Intent i = new Intent(detalles_pedido.this, Scaner_dispositivo.class);
+        Intent i = new Intent(detalles_pedido.this, Agregar_dispositivos.class);
         i.putExtra("idpedido", idpedido );
         startActivity(i);
     }

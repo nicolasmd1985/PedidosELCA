@@ -40,6 +40,9 @@ public class DBController extends SQLiteOpenHelper {
         ///////////////BASE AUX PEDIDOS//////////////////
         query = "CREATE TABLE aux_pedido ( idauxpedido INTEGER PRIMARY KEY, idtecnico TEXT, cliente TEXT, descripcion TEXT, idnumsoporte TEXT, calle TEXT, numero TEXT, ciudad TEXT, provincia TEXT, fechacr TEXT, fechack TEXT)";
         sqLiteDatabase.execSQL(query);
+        ///////////////BASE AUX PEDIDOS//////////////////
+        query = "CREATE TABLE dispositivos ( id_dispositivo INTEGER PRIMARY KEY, codigoscan TEXT, nombre TEXT, descripcion TEXT, ubicaciongps TEXT, dirgps TEXT, horasca TEXT)";
+        sqLiteDatabase.execSQL(query);
 
     }
 
@@ -51,6 +54,10 @@ public class DBController extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
 
         query = "DROP TABLE IF EXISTS aux_pedido";
+        sqLiteDatabase.execSQL(query);
+        onCreate(sqLiteDatabase);
+
+        query = "DROP TABLE IF EXISTS dispositivos";
         sqLiteDatabase.execSQL(query);
         onCreate(sqLiteDatabase);
     }
@@ -229,6 +236,42 @@ public class DBController extends SQLiteOpenHelper {
         return detalle;
 
     }
+
+
+
+
+    ////////////////////***********OBTENER DISPOSITIVOS***********////////////
+
+    /**
+     * Get list of Users from SQLite DB as Array List
+     * @return
+     */
+    public ArrayList<HashMap<String, String>> getdisp() {
+        ArrayList<HashMap<String, String>> wordList;
+        //crea lista
+        wordList = new ArrayList<HashMap<String, String>>();
+
+        ///////QUERY DE DISPOSITIVOS
+      //  query = "CREATE TABLE dispositivos ( id_dispositivo INTEGER PRIMARY KEY, codigoscan TEXT, nombre TEXT, descripcion TEXT, ubicaciongps TEXT, dirgps TEXT, horasca TEXT)";
+
+        String selectQuery = "SELECT  codigoscan,nombre,descripcion FROM dispositivos";
+
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                HashMap<String, String> map = new HashMap<String, String>();
+                map.put("codigoscan", cursor.getString(0));
+                map.put("nombre", cursor.getString(1));
+                map.put("descripcion", cursor.getString(2));
+
+                wordList.add(map);
+            } while (cursor.moveToNext());
+        }
+        database.close();
+        return wordList;
+    }
+
 
 
 

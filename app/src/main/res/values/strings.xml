@@ -20,4 +20,8 @@
     <string name="pedidopen">Pedidos Pendientes</string>
     <string name="terminar">Terminar</string>
     <string name="disp">Dspositivos Instalados</string>
+    <string name="Dispositivos">Dispositivos</string>
+    <string name="codigo">Introduzca Codigo</string>
+    <string name="nomb">Nombre del Dispositivo</string>
+    <string name="descrip_disp">Descripcion del dispositivo</string>
 </resources>
