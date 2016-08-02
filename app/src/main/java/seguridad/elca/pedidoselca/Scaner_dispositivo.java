@@ -26,16 +26,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
 public class Scaner_dispositivo extends AppCompatActivity implements OnClickListener {
 
-
+    DBController controller = new DBController(this);
 
     TextView mensaje1;
 
-    EditText codigo,nombre,descripcion,latitud,longitud;
+    EditText codigo,nombre,descripcion,latitud,longitud,tiemp;
     private Button scanBtn;
     private TextView formatTxt, contentTxt;
     String idped;
@@ -55,8 +59,11 @@ public class Scaner_dispositivo extends AppCompatActivity implements OnClickList
 
 
         codigo = (EditText) findViewById(R.id.codigo);
+        nombre = (EditText) findViewById(R.id.nombre);
+        descripcion = (EditText) findViewById(R.id.descripcion);
         latitud = (EditText) findViewById(R.id.latitud);
         longitud = (EditText) findViewById(R.id.longitud);
+        tiemp = (EditText) findViewById(R.id.tiempo);
 
         scanBtn.setOnClickListener(this);
         idped= getIntent().getStringExtra("idpedido");
@@ -107,6 +114,7 @@ public class Scaner_dispositivo extends AppCompatActivity implements OnClickList
 
             //formatTxt.setText("FORMAT: " + scanFormat);
             codigo.setText(scanContent);
+            tiemp.setText(tiempo());
         }
         else{
             Toast toast = Toast.makeText(getApplicationContext(),
@@ -210,6 +218,70 @@ public class Scaner_dispositivo extends AppCompatActivity implements OnClickList
 
 
     }
+
+
+
+
+    ////////////////*********************CLICK EN EL BOTON*************////////////
+
+
+
+    public void adddip(View view) {
+
+
+        HashMap<String, String> queryValues = new HashMap<String, String>();
+
+        queryValues.put("codigo", codigo.getText().toString());
+        queryValues.put("nombre", nombre.getText().toString());
+        queryValues.put("descripcion", descripcion.getText().toString());
+        queryValues.put("latitud", latitud.getText().toString());
+        queryValues.put("longitud", longitud.getText().toString());
+        queryValues.put("tiempo", tiempo());
+        queryValues.put("idpedido", idped);
+        //System.out.println(tiempo());
+
+        controller.inserdips(queryValues);
+
+        this.callHomeActivity(view);
+
+    }
+
+
+    public String tiempo()
+    {
+        final Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(System.currentTimeMillis());
+        Date date = cal.getTime();
+               //long dia = date.getTime();
+        int year = date.getYear()-100;
+        System.out.println (year);
+        //System.out.println(""+date.getHours()+":"+date.getMinutes()+" "+date.getDay()+"/"+date.getMonth()+"/"+date.getYear());
+        String time = "" + date.getHours() + ":" + date.getMinutes() + " " + date.getDay() + "/" + date.getMonth() + "/" + year;
+        return time;
+    }
+
+
+
+    /**
+     * Navigate to Home Screen
+     * @param view
+     */
+    public void callHomeActivity(View view) {
+        Intent objIntent = new Intent(getApplicationContext(),
+                Agregar_dispositivos.class);
+        objIntent.putExtra("idpedido", idped );
+        startActivity(objIntent);
+    }
+
+    /**
+     * Called when Cancel button is clicked
+     * @param view
+     */
+    public void canceldisp(View view) {
+        this.callHomeActivity(view);
+    }
+
+
 
 
 }

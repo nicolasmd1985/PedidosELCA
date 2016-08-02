@@ -100,6 +100,36 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
+        <EditText
+            android:id="@+id/tiempo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="tiempo"
+            android:layout_below="@+id/longitud"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agregar"
+            android:id="@+id/btagr"
+            android:onClick="adddip"
+            android:layout_below="@+id/tiempo"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:onClick="canceldisp"
+            android:id="@+id/button3"
+            android:layout_alignBottom="@+id/btagr"
+            android:layout_toRightOf="@+id/btagr"
+            android:layout_toEndOf="@+id/btagr" />
+
 
     </RelativeLayout>
 

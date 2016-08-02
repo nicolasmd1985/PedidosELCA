@@ -61,7 +61,7 @@
             android:layout_below="@+id/textpedido"
             android:id="@android:id/list"
             android:layout_width="match_parent"
-            android:layout_height="320dp"
+            android:layout_height="400dp"
             android:layout_alignParentLeft="true">
         </ListView>
 
