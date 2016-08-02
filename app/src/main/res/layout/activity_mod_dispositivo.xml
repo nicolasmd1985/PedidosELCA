@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:background="#cc0000"
         android:padding="5dp"
-        android:text="@string/Dispositivos"
+        android:text="@string/Moddip"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#FFFFFF" />
 
@@ -35,13 +35,13 @@
             <requestFocus />
         </EditText>
 
-    <Button android:id="@+id/scan_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/scan"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/codigo"
-        android:layout_toEndOf="@+id/codigo" />
+        <Button android:id="@+id/scan_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/scan"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/codigo"
+            android:layout_toEndOf="@+id/codigo" />
 
 
         <EditText
@@ -79,17 +79,6 @@
         </EditText>
 
 
-
-        TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/mensaje_id"
-            android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/latitud"
-            android:layout_alignEnd="@+id/latitud" />
-
         <EditText
             android:id="@+id/longitud"
             android:layout_width="wrap_content"
@@ -113,7 +102,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Agregar"
+            android:text="Modificar"
             android:id="@+id/btagr"
             android:onClick="adddip"
             android:layout_below="@+id/tiempo"

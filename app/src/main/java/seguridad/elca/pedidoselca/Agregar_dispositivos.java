@@ -3,6 +3,7 @@ package seguridad.elca.pedidoselca;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,15 +52,45 @@ public class Agregar_dispositivos extends ActionBarActivity {
 
             @Override
             public void onItemClick(AdapterView parent, View view, int i, long l) {
-
                 Toast.makeText(getApplicationContext(), "presiono " + i, Toast.LENGTH_SHORT).show();
+
+
+                ArrayList<HashMap<String, String>> dipslist =  controller.getdisp(idped);
+                int cont = 0;
+                for (HashMap<String, String> hashMap : dipslist) {
+                    //if (){}
+
+
+                    System.out.println(cont);
+                    if(i==cont)
+                    {
+                        //System.out.println(hashMap.get("codigoscan"));
+                        // controller.dipsup(hashMap.get("codigoscan"));
+                        String code = hashMap.get("codigoscan");
+
+                        Intent objIntent = new Intent(getApplicationContext(), Mod_dispositivo.class);
+                        objIntent.putExtra("idpedido", idped );
+                        objIntent.putExtra("codigoscan", code);
+                        startActivity(objIntent);
+
+
+
+                    }
+                    cont=cont+1;
+                }
+
+
+
+
             }
         });
 
 
-        lista.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView parent, View view, int i, long l) {
+
+
+            lista.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView adapterView, View view, int i, long l) {
 
                 Toast.makeText(getApplicationContext(), "presiono hola" + i, Toast.LENGTH_SHORT).show();
 
@@ -83,14 +116,13 @@ public class Agregar_dispositivos extends ActionBarActivity {
                     cont=cont+1;
                 }
 
-
-
-
-                return false;
+                return true;
             }
 
 
         });
+
+
 
     }
 

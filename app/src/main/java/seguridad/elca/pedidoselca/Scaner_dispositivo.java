@@ -37,11 +37,11 @@ public class Scaner_dispositivo extends AppCompatActivity implements OnClickList
 
     DBController controller = new DBController(this);
 
-    TextView mensaje1;
+
 
     EditText codigo,nombre,descripcion,latitud,longitud,tiemp;
     private Button scanBtn;
-    private TextView formatTxt, contentTxt;
+
     String idped;
 
 
@@ -51,7 +51,7 @@ public class Scaner_dispositivo extends AppCompatActivity implements OnClickList
         setContentView(R.layout.activity_scaner_dispositivo);
 
 
-        mensaje1 = (TextView) findViewById(R.id.mensaje_id);
+
 
         scanBtn = (Button)findViewById(R.id.scan_button);
        // formatTxt = (TextView)findViewById(R.id.scan_format);
