@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import seguridad.elca.pedidoselca.android.IntentIntegrator;
 import seguridad.elca.pedidoselca.android.IntentResult;
 
@@ -46,9 +49,24 @@ public class Mod_dispositivo extends AppCompatActivity implements View.OnClickLi
     private void carga_datos(String code) {
 
 
+        ArrayList<HashMap<String, String>> dipslist =  controller.getdispcod(code);
+
+
+        for (HashMap<String, String> hashMap : dipslist) {
+            //if (){}
+
+                //System.out.println(hashMap.get("codigoscan"));
+                // controller.dipsup(hashMap.get("codigoscan"));
+            codigo.setText(hashMap.get("codigoscan"));
+
+        }
 
     }
 
+
+
+
+    ///////////////////************************CLICK/*******////////////
     @Override
     public void onClick(View v) {
 

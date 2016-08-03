@@ -88,7 +88,7 @@ public class Scaner_dispositivo extends AppCompatActivity implements OnClickList
         //mlocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0,
         //      (LocationListener) Local);
 
-        mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,
+        mlocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0,
                 (LocationListener) Local);
 
     }
@@ -237,7 +237,7 @@ public class Scaner_dispositivo extends AppCompatActivity implements OnClickList
         queryValues.put("latitud", latitud.getText().toString());
         queryValues.put("longitud", longitud.getText().toString());
         queryValues.put("tiempo", tiempo());
-        queryValues.put("idpedido", idped);
+        queryValues.put("idpedido", idped.toString());
         //System.out.println(tiempo());
 
         controller.inserdips(queryValues);

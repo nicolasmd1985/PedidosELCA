@@ -304,15 +304,43 @@ public class DBController extends SQLiteOpenHelper {
     public void dipsup (String iddisp) {
         SQLiteDatabase database = this.getWritableDatabase();
 
-        database.delete("dispositivos", "codigoscan="+iddisp+"", null);
-
-
+        database.delete("dispositivos", "codigoscan='"+iddisp+"'", null);
 
     }
 
 
 
+////////////////////***********OBTENER DISPOSITIVOS POR CODIGO***********////////////
 
+    /**
+     * Get list of Users from SQLite DB as Array List
+     * @return
+     */
+    public ArrayList<HashMap<String, String>> getdispcod(String code) {
+        ArrayList<HashMap<String, String>> wordList;
+        //crea lista
+        wordList = new ArrayList<HashMap<String, String>>();
+
+        ///////QUERY DE DISPOSITIVOS
+        //  query = "CREATE TABLE dispositivos ( id_dispositivo INTEGER PRIMARY KEY, codigoscan TEXT, nombre TEXT, descripcion TEXT, latitud TEXT, longitud TEXT, horasca TEXT)";
+
+        String selectQuery = "SELECT  codigoscan,nombre,descripcion FROM dispositivos where codigoscan like '"+code+"'";
+
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                HashMap<String, String> map = new HashMap<String, String>();
+                map.put("codigoscan", cursor.getString(0));
+                map.put("nombre", cursor.getString(1));
+                map.put("descripcion", cursor.getString(2));
+
+                wordList.add(map);
+            } while (cursor.moveToNext());
+        }
+        database.close();
+        return wordList;
+    }
 
 
 
