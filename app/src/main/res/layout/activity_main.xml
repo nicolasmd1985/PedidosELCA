@@ -14,6 +14,7 @@
         android:inputType="textPassword"
         android:layout_below="@+id/TextView01"
         android:layout_centerHorizontal="true">
+        <requestFocus />
     </EditText>
 
     <TextView
@@ -45,7 +46,9 @@
         android:ems="10"
         android:layout_below="@+id/textView1"
         android:layout_alignLeft="@+id/password"
-        android:layout_alignStart="@+id/password" />
+        android:layout_alignStart="@+id/password" >
+        <requestFocus />
+    </EditText>
 
 
     <TextView
@@ -64,8 +67,7 @@
         android:id="@+id/imageView"
         android:src="@mipmap/elca"
         android:layout_below="@+id/textView2"
-        android:layout_toRightOf="@+id/textView1"
-        android:layout_toEndOf="@+id/textView1" />
+        android:layout_centerHorizontal="true" />
 
 
     <Button

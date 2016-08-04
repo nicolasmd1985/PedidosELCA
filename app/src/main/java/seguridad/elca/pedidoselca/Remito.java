@@ -1,10 +1,16 @@
 package seguridad.elca.pedidoselca;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -12,6 +18,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
+
 import android.widget.AdapterView;
 
 public class Remito extends ActionBarActivity {
@@ -19,6 +27,9 @@ public class Remito extends ActionBarActivity {
     String idped;
 
     private DrawingView drawView;
+
+
+
 
 
     DBController controller = new DBController(this);
@@ -30,6 +41,8 @@ public class Remito extends ActionBarActivity {
         idped = getIntent().getStringExtra("idpedido");
 
         cargadisp(idped);
+
+        drawView = (DrawingView)findViewById(R.id.drawing);
 
 
 
@@ -65,7 +78,7 @@ public class Remito extends ActionBarActivity {
             //Set the User Array list in ListView
             //ListAdapter adapter = new SimpleAdapter( Remito.this,dipslist, R.layout.view_remito, new String[] {"nombre"}, new int[] {R.id.nomdisp});
 
-            ListAdapter adapter = new SimpleAdapter( Remito.this,dipslist, R.layout.view_disp, new String[] { "codigoscan","nombre","descripcion"}, new int[] {R.id.nomdisp});
+            ListAdapter adapter = new SimpleAdapter( Remito.this,dipslist, R.layout.view_remito, new String[] { "nombre"}, new int[] {R.id.nomdipo});
             ListView myList=(ListView)findViewById(android.R.id.list);
             myList.setAdapter(adapter);
             //Display Sync status of SQLite DB
@@ -82,7 +95,38 @@ public class Remito extends ActionBarActivity {
     }
 
 
+   public void savere(View view)
+   {
+       System.out.println("hola");
+       AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
+       saveDialog.setTitle("Guardar Remito");
+       saveDialog.setMessage("Desea guardar el remito?");
+       saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+           public void onClick(DialogInterface dialog, int which){
+               //save drawing
+               drawView.setDrawingCacheEnabled(true);
+               String imgSaved = MediaStore.Images.Media.insertImage(
+                       getContentResolver(), drawView.getDrawingCache(),
+                       UUID.randomUUID().toString()+".png", "drawing");
+               if(imgSaved!=null){
+                   Toast savedToast = Toast.makeText(getApplicationContext(),
+                           "Drawing saved to Gallery!", Toast.LENGTH_SHORT);
+                   savedToast.show();
+               }
+               else{
+                   Toast unsavedToast = Toast.makeText(getApplicationContext(),
+                           "Oops! Image could not be saved.", Toast.LENGTH_SHORT);
+                   unsavedToast.show();
+               }
+               drawView.destroyDrawingCache();
 
-
-
+           }
+       });
+       saveDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+           public void onClick(DialogInterface dialog, int which){
+               dialog.cancel();
+           }
+       });
+       saveDialog.show();
+   }
 }

@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,8 +12,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:weightSum="1">
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
 
 
         <TextView
@@ -21,45 +21,122 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="REMITO"
-            android:id="@+id/textView10"
-            android:layout_gravity="center_horizontal" />
+            android:id="@+id/remito"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorPrimary"
+            android:textSize="25dp"
+            android:textIsSelectable="true"
+            android:textStyle="bold" />
 
-        <ListView
-            android:layout_below="@+id/textpedido"
-            android:id="@android:id/list"
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_alignParentLeft="true"
-            android:descendantFocusability="blocksDescendants"
-            >
-        </ListView>
 
-        <EditText
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:layout_below="@+id/linearLayout1"
+        >
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView2"
+            />
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:ems="10"
-            android:id="@+id/editText"
-            android:hint="Resumen del remito" />
+            android:background="#D5E3EE"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Items Modificados o Instalados"
+                android:id="@+id/textView9"
+                android:textColor="#002fff"
+                android:textAlignment="center"
+                android:background="#c9e0e5" />
+
+            <ListView
+                android:layout_below="@+id/textpedido"
+                android:id="@android:id/list"
+                android:layout_width="match_parent"
+                android:layout_height="132dp"
+                android:layout_alignParentLeft="true"
+                android:descendantFocusability="blocksDescendants"
+                >
+            </ListView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout3"
+        android:layout_below="@+id/linearLayout2">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="116dp"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:hint="Resumen del remito"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/background_light"
+        android:capitalize="sentences"
+        android:elegantTextHeight="true" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout4"
+        android:layout_below="@+id/linearLayout3">
+
+        <seguridad.elca.pedidoselca.DrawingView
+            android:id="@+id/drawing"
+            android:layout_width="match_parent"
+            android:layout_height="129dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#FFFFFFFF"
+             />
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="1"
+        android:id="@+id/linearLayout5"
+        android:layout_below="@+id/linearLayout4">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Button"
-            android:id="@+id/button4"
-            android:layout_gravity="center_horizontal" />
+            android:id="@+id/save"
+            android:layout_gravity="center_horizontal"
+            android:onClick="savere" />
+
     </LinearLayout>
 
-    <seguridad.elca.pedidoselca.DrawingView
-        android:id="@+id/drawing"
-        android:layout_width="fill_parent"
-        android:layout_height="202dp"
-        android:layout_marginBottom="3dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="3dp"
-        android:background="#FFFFFFFF" />
-
-
-
-</LinearLayout>
+</RelativeLayout>
