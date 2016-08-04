@@ -343,6 +343,29 @@ public class DBController extends SQLiteOpenHelper {
     }
 
 
+//////////////////////************************MODIFICAR DISPOSITIVOS*********/////////////////
+
+    /**
+     * Inserts User into SQLite DB
+     * @param queryValues
+     */
+    public void updips(HashMap<String, String> queryValues) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        //values.put("idauxpedido", queryValues.get("idauxpedido"));
+        values.put("codigoscan", queryValues.get("codigo"));
+        values.put("nombre", queryValues.get("nombre"));
+        values.put("descripcion", queryValues.get("descripcion"));
+
+        String id =  "'"+queryValues.get("codigo")+"'";
+
+        database.update("dispositivos", values ,"codigoscan"+"="+id, null);
+        database.close();
+    }
+
+
+
+
 
 
 

@@ -12,8 +12,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import seguridad.elca.pedidoselca.android.IntentIntegrator;
 import seguridad.elca.pedidoselca.android.IntentResult;
 import android.content.Intent;
@@ -22,11 +20,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -59,7 +55,7 @@ public class Scaner_dispositivo extends AppCompatActivity implements OnClickList
 
 
         codigo = (EditText) findViewById(R.id.codigo);
-        nombre = (EditText) findViewById(R.id.nombre);
+        nombre = (EditText) findViewById(R.id.nomdisp);
         descripcion = (EditText) findViewById(R.id.descripcion);
         latitud = (EditText) findViewById(R.id.latitud);
         longitud = (EditText) findViewById(R.id.longitud);
@@ -246,6 +242,9 @@ public class Scaner_dispositivo extends AppCompatActivity implements OnClickList
 
     }
 
+
+
+    ///////////////////////*******************OBTENER TIEMPO**************/////////////////
 
     public String tiempo()
     {

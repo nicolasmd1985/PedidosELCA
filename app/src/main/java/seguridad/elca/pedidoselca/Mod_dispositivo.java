@@ -31,7 +31,7 @@ public class Mod_dispositivo extends AppCompatActivity implements View.OnClickLi
 
         scanBtn = (Button)findViewById(R.id.scan_button);
         codigo = (EditText) findViewById(R.id.codigo);
-        nombre = (EditText) findViewById(R.id.nombre);
+        nombre = (EditText) findViewById(R.id.nomdisp);
         descripcion = (EditText) findViewById(R.id.descripcion);
 
 
@@ -58,6 +58,8 @@ public class Mod_dispositivo extends AppCompatActivity implements View.OnClickLi
                 //System.out.println(hashMap.get("codigoscan"));
                 // controller.dipsup(hashMap.get("codigoscan"));
             codigo.setText(hashMap.get("codigoscan"));
+            nombre.setText(hashMap.get("nombre"));
+            descripcion.setText(hashMap.get("descripcion"));
 
         }
 
@@ -134,6 +136,31 @@ public class Mod_dispositivo extends AppCompatActivity implements View.OnClickLi
     public void canceldisp(View view) {
         this.callHomeActivity(view);
     }
+
+
+
+
+    ////////////////*********************CLICK EN EL BOTON*************////////////
+
+
+
+    public void moddisp(View view) {
+
+
+        HashMap<String, String> queryValues = new HashMap<String, String>();
+
+        queryValues.put("codigo", codigo.getText().toString());
+        queryValues.put("nombre", nombre.getText().toString());
+        queryValues.put("descripcion", descripcion.getText().toString());
+
+        //System.out.println(tiempo());
+
+        controller.updips(queryValues);
+
+        this.callHomeActivity(view);
+
+    }
+
 
 
 

@@ -31,7 +31,8 @@
         <activity android:name=".detalles_pedido" />
         <activity android:name=".Scaner_dispositivo" />
         <activity android:name=".Agregar_dispositivos" />
-        <activity android:name=".Mod_dispositivo"></activity>
+        <activity android:name=".Mod_dispositivo" />
+        <activity android:name=".Remito"></activity>
     </application>
 
 </manifest>

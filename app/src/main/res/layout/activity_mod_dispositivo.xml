@@ -45,7 +45,7 @@
 
 
         <EditText
-            android:id="@+id/nombre"
+            android:id="@+id/nomdisp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10" android:hint="@string/nomb"
@@ -61,53 +61,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10" android:hint="@string/descrip_disp"
-            android:layout_below="@+id/nombre"
+            android:layout_below="@+id/nomdisp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true">
 
         </EditText>
 
-        <EditText
-            android:id="@+id/latitud"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10" android:hint="latitud"
-            android:layout_below="@+id/descripcion"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-
-        </EditText>
-
-
-        <EditText
-            android:id="@+id/longitud"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="longitud"
-            android:layout_below="@+id/latitud"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <EditText
-            android:id="@+id/tiempo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="tiempo"
-            android:layout_below="@+id/longitud"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Modificar"
             android:id="@+id/btagr"
-            android:onClick="adddip"
-            android:layout_below="@+id/tiempo"
+            android:onClick="moddisp"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/descripcion" />
 
         <Button
             android:layout_width="wrap_content"

@@ -75,6 +75,7 @@
         android:layout_height="wrap_content"
         android:text="@string/terminar"
         android:id="@+id/button"
+        android:onClick="terminar"
         android:layout_below="@id/relativeLayout1"
         android:layout_centerHorizontal="true" />
 

@@ -180,7 +180,7 @@ public class Agregar_dispositivos extends ActionBarActivity {
     }
 
 
-
+///////////******************POP UP**************//////////////
     private void showSimplePopUp(final String code) {
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
@@ -222,5 +222,23 @@ public class Agregar_dispositivos extends ActionBarActivity {
         objIntent.putExtra("idpedido", idped );
         startActivity(objIntent);
     }
+
+
+
+    /**
+     * Navigate to Home Screen
+     * @param view
+     */
+    public void terminar(View view) {
+
+        Intent objIntent = new Intent(getApplicationContext(),
+                Remito.class);
+        objIntent.putExtra("idpedido", idped );
+        startActivity(objIntent);
+        }
+
+
+
+
 
 }
