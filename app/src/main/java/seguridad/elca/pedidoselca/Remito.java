@@ -1,8 +1,11 @@
 package seguridad.elca.pedidoselca;
 
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +19,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
@@ -105,19 +109,14 @@ public class Remito extends ActionBarActivity {
            public void onClick(DialogInterface dialog, int which){
                //save drawing
                drawView.setDrawingCacheEnabled(true);
-               String imgSaved = MediaStore.Images.Media.insertImage(
-                       getContentResolver(), drawView.getDrawingCache(),
-                       UUID.randomUUID().toString()+".png", "drawing");
-               if(imgSaved!=null){
-                   Toast savedToast = Toast.makeText(getApplicationContext(),
-                           "Drawing saved to Gallery!", Toast.LENGTH_SHORT);
-                   savedToast.show();
-               }
-               else{
-                   Toast unsavedToast = Toast.makeText(getApplicationContext(),
-                           "Oops! Image could not be saved.", Toast.LENGTH_SHORT);
-                   unsavedToast.show();
-               }
+
+               Bitmap image = drawView.getDrawingCache();
+               HashMap<String, String> queryValues = new HashMap<String, String>();
+
+
+
+
+               controller.upfoto(image,queryValues);
                drawView.destroyDrawingCache();
 
            }

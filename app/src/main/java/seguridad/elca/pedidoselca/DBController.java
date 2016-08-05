@@ -5,7 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,6 +17,8 @@ import java.util.HashMap;
  */
 public class DBController extends SQLiteOpenHelper {
 
+
+    private DrawingView drawView;
 
     private static final String NOMBRE_BASE_DATOS = "pedidos.db";
 
@@ -43,6 +47,10 @@ public class DBController extends SQLiteOpenHelper {
         ///////////////BASE AUX PEDIDOS//////////////////
         query = "CREATE TABLE dispositivos ( id_dispositivo INTEGER PRIMARY KEY, codigoscan TEXT, nombre TEXT, descripcion TEXT, latitud TEXT, longitud TEXT, horasca TEXT, fkidauxpedido INTEGER REFERENCES idauxpedido)";
         sqLiteDatabase.execSQL(query);
+        ///////////////BASE DEL REMITO//////////////////
+        query = "CREATE TABLE remito ( id_remito INTEGER PRIMARY KEY, id_dispositivo INTEGER REFERENCES id_dispositivo, observaciones TEXT, firma BLOB)";
+        sqLiteDatabase.execSQL(query);
+
 
     }
 
@@ -58,6 +66,10 @@ public class DBController extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
 
         query = "DROP TABLE IF EXISTS dispositivos";
+        sqLiteDatabase.execSQL(query);
+        onCreate(sqLiteDatabase);
+
+        query = "DROP TABLE IF EXISTS remito";
         sqLiteDatabase.execSQL(query);
         onCreate(sqLiteDatabase);
     }
@@ -364,9 +376,32 @@ public class DBController extends SQLiteOpenHelper {
     }
 
 
+////////////////*****************INSERTAR ARCHIVOS***********////////////////
+
+    public void upfoto(Bitmap imagen,HashMap<String, String> queryValues) {
+        {
+            SQLiteDatabase database = this.getWritableDatabase();
 
 
 
+
+            ContentValues values = new ContentValues();
+            //values.put("idauxpedido", queryValues.get("idauxpedido"));
+            //  query = "CREATE TABLE dispositivos ( id_dispositivo INTEGER PRIMARY KEY, codigoscan TEXT, nombre TEXT, descripcion TEXT, latitud TEXT, longitud TEXT, horasca TEXT)";
+
+            //query = "CREATE TABLE remito ( id_remito INTEGER PRIMARY KEY, id_dispositivo INTEGER REFERENCES id_dispositivo, observaciones TEXT, firma BLOB)";
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+            imagen.compress(Bitmap.CompressFormat.PNG, 100, out);
+            //values.put("codigoscan", queryValues.get("codigo"));
+            values.put("firma", out.toByteArray());
+            //values.put("udpateStatus", "no");
+            database.insert("remito", null,values );
+            database.close();
+
+        }
+
+    }
 
 
 }
